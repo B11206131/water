@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>編輯喝水記錄</h2>
+    <form method="POST">
+        <label for="date">日期：</label>
+        <input type="date" name="date" value="{{ record['date'] }}" required><br>
+        <label for="amount">喝水量（ml）：</label>
+        <input type="number" name="amount" value="{{ record['amount'] }}" required><br>
+        <button type="submit">儲存</button>
+    </form>
+    <a href="{{ url_for('index') }}">回到列表</a>
+{% endblock %}

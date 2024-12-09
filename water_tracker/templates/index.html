@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>喝水記錄列表</h2>
+    <ul>
+        {% for record in records %}
+            <li>
+                日期：{{ record['date'] }}，喝水量：{{ record['amount'] }} ml
+                <a href="{{ url_for('edit_record', record_id=record['id']) }}">編輯</a>
+                <a href="{{ url_for('delete_record', record_id=record['id']) }}">刪除</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_record') }}">新增記錄</a>
+
+    <h3>通知</h3>
+    {% if notifications %}
+        <ul>
+            {% for notification in notifications %}
+                <li>{{ notification }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>目前沒有通知。</p>
+    {% endif %}
+{% endblock %}
